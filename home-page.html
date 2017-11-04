@@ -12,6 +12,8 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- javascript files -->
 
     <!-- Bootstrap CDN-->
@@ -22,6 +24,7 @@
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
 </head>
 
 <body>
@@ -120,18 +123,24 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>
 
     <!-- HOME PAGE DIPSLAY OF ANIMAL PHOTO AND NAME-->
-    <div id="animal-preview-container"></div>
+    <div id="animal-preview-container">
+        <div id="petFinderInfo"></div>
+    </div>
 
     <!-- PAGE FOOTER-->
     <footer>
         <p>PetHarmony Footer</p>
     </footer>
+
+    <!-- custom JS files -->
+    <script src="assets/js/petFinder_landingPageLoad.js"></script>
+    <script src="assets/js/petFinder_resultsJSON.js"></script>
 
 </body>
 
