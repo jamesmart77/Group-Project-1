@@ -1,6 +1,9 @@
-document.addEventListener("load", pageLoad());
+//global JSON Results 
+var animalResults
 
-function pageLoad() {
+document.addEventListener("load", homePageLoad());
+
+function homePageLoad() {
 
     var location = '35005';
     var animalType = ['dog', 'cat', 'bird', 'smallfurry', 'barnyard']
@@ -11,6 +14,7 @@ function pageLoad() {
         var url =
             'http://api.petfinder.com/pet.getRandom?key=435c7d11e964556e87d7de00e3333dba&location=' + location +
             '&animal=' + animalType[i] + '&age=' + age + '&count=1&output=full&format=json';
+
 
         $.ajax({
             type: 'GET',
@@ -23,8 +27,8 @@ function pageLoad() {
 
                 console.log(petfinder);
 
-                var infoDiv = $("<div>")
-                var name = $("<div>").html("<b>Name: </b>" + petfinder.name['$t']);
+                var infoDiv = $("<div id='animal-div'>")
+                var name = "<br><b>Name: </b>" + petfinder.name['$t'];
                 // var animal = $("<div>").html("<b>Animal Type: </b>" + petfinder.animal['$t']);
                 // var age = $("<div>").html("<b>Age: </b>" + petfinder.age['$t']);
                 // var sex = $("<div>").html("<b>Sex: </b>" + petfinder.sex['$t']);
@@ -55,18 +59,24 @@ function pageLoad() {
                 infoDiv.append("<br><hr><br>")
 
                 // return infoHTML;
-                $('#petfinderInfo').append(infoDiv);
+                $('#petFinderInfo').append(infoDiv);
 
             }
         })
     }
 }
 
-$("#animal-container").on("click", ".animal-img", function () {
-    debugger;
+
+$("#animal-preview-container").on("click", ".animal-img", function () {
+
     var animalID = ($(this).data('id'));
 
-    alert(animalID)
+    var url =
+        'http://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + animalID +
+        '&format=json';
+
+    getAnimalResults(url, "single")
+
 })
 
 /*
