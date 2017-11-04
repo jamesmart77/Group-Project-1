@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+
     <!-- javascript files -->
 
     <!-- Bootstrap CDN-->
@@ -19,6 +20,7 @@
         crossorigin="anonymous">
 
     <!-- CSS files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
@@ -28,7 +30,9 @@
 
     <!-- NAVIGATION BAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">PetHarmony</a>
+        <a class="navbar-brand" href="home-page.html">
+            <img src="assets/images/petharmony-logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> PetHarmony
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,90 +41,98 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="home-page.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Saved Pets</a>
+                    <a class="nav-link" href="saved-page.html">Saved Pets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="index.html">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <!-- SEARCH CONTAINER WITH INPUTS-->
-    <div>
-        <form>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Location</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Example: Boston, MA">
+    <div id="search-input-container" class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1>Search</h1>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Type</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Any</option>
-                    <option>Barnyard</option>
-                    <option>Bird</option>
-                    <option>Cat</option>
-                    <option>Dog</option>
-                    <option>Horse</option>
-                    <option>Reptile</option>
-                    <option>Smallfurry</option>
-                </select>
+        <form id="search-input-form-container">
+            <div class="row">
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="location-input">Location</label>
+                    <input type="text" class="form-control" id="location-input" placeholder="Example: Boston, MA">
+                </div>
+
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="animal-type-input">Type</label>
+                    <select class="form-control" id="animal-type-input">
+                        <option>Any</option>
+                        <option>Barnyard</option>
+                        <option>Bird</option>
+                        <option>Cat</option>
+                        <option>Dog</option>
+                        <option>Horse</option>
+                        <option>Reptile</option>
+                        <option>Smallfurry</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="breed-type-input">Breed</label>
+                    <select class="form-control" id="breed-type-input">
+                        <option>Any</option>
+                        <option>Breed 1</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="age-input">Age</label>
+                    <select class="form-control" id="age-input">
+                        <option>Any</option>
+                        <option>Baby</option>
+                        <option>Young</option>
+                        <option>Adult</option>
+                        <option>Senior</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="size-input">Size</label>
+                    <select class="form-control" id="size-input">
+                        <option value="any">Any</option>
+                        <option value="s">Small</option>
+                        <option value="m">Medium</option>
+                        <option value="l">Large</option>
+                        <option value="xl">Extra-Large</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label for="gender-radio">Gender</label>
+                    <div id="radio-button-group" class="row">
+                        <label class="form-check-label col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <input class="gender-radio" type="radio" name="genderRadios" value="any" checked> Any
+                        </label>
+
+                        <label class="form-check-label col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <input class="gender-radio" type="radio" name="genderRadios" value="male"> Male
+                        </label>
+
+                        <label class="form-check-label col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <input class="gender-radio" type="radio" name="genderRadios" value="female"> Female
+                        </label>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Breed</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Any</option>
-                    <option>Breed 1</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Age</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Any</option>
-                    <option>Baby</option>
-                    <option>Young</option>
-                    <option>Adult</option>
-                    <option>Senior</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Size</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option value="any">Any</option>
-                    <option value="s">Small</option>
-                    <option value="m">Medium</option>
-                    <option value="l">Large</option>
-                    <option value="xl">Extra-Large</option>
-                </select>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="any" checked> Any
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="male"> Male
-                </label>
-            </div>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="female"> Female
-                </label>
-            </div>
-
-            <div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group" class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="submit-button" style="padding:0px;">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
     </div>
