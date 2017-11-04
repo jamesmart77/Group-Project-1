@@ -38,7 +38,6 @@ $(document).ready(function() {
         //Sign Up
         const promise = auth.signInWithEmailAndPassword(email, pass);
         promise.catch(e => console.log(e.message));
-
         // if (pass !== true) {
         //     $("#txtPassword").empty();
         // }
@@ -67,14 +66,12 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             btnLogout.show();
+            window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
         } else {
             console.log('not logged in');
             btnLogout.hide();
         }
     });
-
-
-
 })
 
 function OAuthSignIn() {
