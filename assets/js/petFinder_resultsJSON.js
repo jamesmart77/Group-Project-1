@@ -11,7 +11,6 @@ function singleAnimalResults(url) {
 
             localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder));
 
-
             window.location.href = "results-page.html";
 
         }
