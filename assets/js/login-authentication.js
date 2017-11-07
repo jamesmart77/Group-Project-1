@@ -59,6 +59,7 @@ $(document).ready(function() {
     // signout
     $("#btnLogout").on("click", e => {
         firebase.auth().signOut();
+        // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
     });
 
     // add a realtime listener
