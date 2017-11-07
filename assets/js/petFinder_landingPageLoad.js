@@ -75,7 +75,7 @@ $("#animal-preview-container").on("click", ".animal-img", function () {
         'http://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + animalID +
         '&format=json';
 
-    getAnimalResults(url, "single")
+        singleAnimalResults(url)
 
 })
 
