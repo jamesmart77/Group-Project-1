@@ -23,6 +23,10 @@ function singleAnimalResults(url) {
 function submitBtnSearch(event){
     
         event.preventDefault();
+
+        //reset local storage
+        localStorage.removeItem("multAnimalResults");
+        localStorage.removeItem("singleAnimalResults");
     
         var location= $("#location-input").val().toLowerCase();
         var animalType = $("#animal-type-input").val().toLowerCase();//animal type needs to be lowercase for api 
@@ -76,9 +80,17 @@ function submitBtnSearch(event){
                 var petfinder = data.petfinder.pets;
     
                 var isArray = $.isArray(petfinder.pet)
-    
-                console.log(petfinder);
-                console.log("is Array: " + isArray);
+                
+                if(isArray){
+                    localStorage.setItem("multAnimalResults", JSON.stringify(data.petfinder));
+                    // localStorage.setItem("singleAnimalResults", null);
+                } else {
+                    localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder.pets));
+                }
+                // console.log(petfinder);
+
+                window.location.href = "results-page.html";
+                // console.log("is Array: " + isArray);
     
     
             }
