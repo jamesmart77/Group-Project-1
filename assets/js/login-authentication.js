@@ -67,7 +67,9 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             btnLogout.show();
-            window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+            if (!window.location.contains("home-page.html")) {
+                window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+            }
         } else {
             console.log('not logged in');
             btnLogout.hide();
