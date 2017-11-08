@@ -1,6 +1,6 @@
 function singleAnimalResults(url) {
     
-    localStorage.clear();
+    localStorage.removeItem("singleAnimalResults");
     
     $.ajax({
         type: 'GET',
@@ -19,7 +19,7 @@ function singleAnimalResults(url) {
 
 function searchBtnFuntion(url) {
 
-    localStorage.clear();
+    localStorage.removeItem("multAnimalResults");
 
         $.ajax({
             type: 'GET',
@@ -28,7 +28,7 @@ function searchBtnFuntion(url) {
             dataType: 'json',
             success: function (data) {
     
-                localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder));
+                localStorage.setItem("multAnimalResults", JSON.stringify(data.petfinder));
     
     
                 window.location.href = "results-page.html";

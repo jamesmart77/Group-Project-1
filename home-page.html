@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- javascript files -->
     <!-- <script type="text/javascript" src="assets/js/login-authentication.js"></script>
@@ -22,14 +23,14 @@
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 
-    <script type="text/javascript" src="assets/js/login-authentication.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/login-authentication.js"></script>
     <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
-    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script> -->
 
     <!-- Google Maps API - loading the google maps geocoding api deferred allows us to load html first -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script> -->
 
 </head>
 
@@ -92,7 +93,7 @@
                     <label for="breed-type-input">Breed</label>
                     <select class="form-control" id="breed-type-input">
                         <option>Any</option>
-                        <option>Breed 1</option>
+                        <!--<option>Breed 1</option> -->
                     </select>
                 </div>
 
@@ -137,7 +138,7 @@
             </div>
             <div class="form-group" class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="submit-button" style="padding:0px;">
-                    <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                    <button id="submit-btn" type="submit" class="btn btn-primary" onclick="submitBtnSearch()">Submit</button>
                 </div>
                 <div>
                 </div>
@@ -149,33 +150,33 @@
             <div id="petFinderInfo"></div>
         </div>
 
-        <script>
-            $("#submit-btn").on("click", function (event) {
+        <!-- <script>
+            // $("#submit-btn").on("click", function (event) {
 
-                 if (sessionStorage.getItem("userLocation") === null) {
-                    // Grab the user input
-                    var userLocationSessionStorage = $("#location-input").val().trim();
-                    alert("submit button clicked.")
+            //      if (sessionStorage.getItem("userLocation") === null) {
+            //         // Grab the user input
+            //         var userLocationSessionStorage = $("#location-input").val().trim();
+            //         alert("submit button clicked.")
                    
-                    // Store the username into localStorage using "localStorage.setItem"
-                    sessionStorage.setItem("userLocation", userLocationSessionStorage);
+            //         // Store the username into localStorage using "localStorage.setItem"
+            //         sessionStorage.setItem("userLocation", userLocationSessionStorage);
 
-                    // And display that name for the user using "localStorage.getItem"
-                    $("#location-input").val(sessionStorage.getItem("userLocation"));
-                    alert(sessionStorage.getItem("userLocation"));
+            //         // And display that name for the user using "localStorage.getItem"
+            //         $("#location-input").val(sessionStorage.getItem("userLocation"));
+            //         alert(sessionStorage.getItem("userLocation"));
 
-               } else {
-                console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+            //    } else {
+            //     console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
              
-                }
-            });
-            $("#location-input").val(sessionStorage.getItem("userLocation"));
+            //     }
+            // });
+            // $("#location-input").val(sessionStorage.getItem("userLocation"));
 
             //local storage sets any key without a value = to null
             //so when on the homepage, we check if there is a userLocation
             //tied to LocalStorage, and if so, we cease to prompt them
             //for whether it's ok to user their location.
-        </script>
+        </script> -->
 
         <!-- PAGE FOOTER-->
         <!-- <footer>
@@ -185,6 +186,7 @@
         <!-- custom JS files -->
         <script src="assets/js/petFinder_landingPageLoad.js "></script>
         <script src="assets/js/petFinder_resultsJSON.js "></script>
+        <script src="assets/js/petFinder_breedList.js "></script>
 
 </body>
 

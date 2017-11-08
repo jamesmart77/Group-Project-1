@@ -4,12 +4,15 @@ function resultsPageLoad() {
 
     var petResultsObject = localStorage.getItem('singleAnimalResults');
 
+    
 
     if (petResultsObject !== null) { //checking for single animal return
         petResultsObject = JSON.parse(petResultsObject);
 
         var petDetails = petResultsObject.pet;
 
+        console.log(petDetails);
+        
         var imgDiv = $("<div class='carousel-item active'>");
         var petImg = $("<img class='d-block w-100 pet-carousel-img' alt='pet-image'>");
         var imgAddress
@@ -79,7 +82,7 @@ function resultsPageLoad() {
     } else {
         //then look at the multiAnimalResults localstorage
     }
-    console.log(petResultsObject);
+    
 
 
 
