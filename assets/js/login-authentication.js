@@ -67,12 +67,11 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             // btnLogout.show();
-            if (window.location.href.indexOf("saved-page.html") == 1) {
-                window.location.href = "https://ehulseman.github.io/Group-Project-1/saved-page.html";
-                if (window.location.href.indexOf("home-page.html") == -1) {
-                    window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
-                }
+
+            if (window.location.href.indexOf("home-page.html") == -1) {
+                window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
             }
+
         } else {
             console.log('not logged in');
             btnLogout.hide();
