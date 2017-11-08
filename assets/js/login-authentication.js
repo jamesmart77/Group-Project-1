@@ -59,20 +59,28 @@ $(document).ready(function() {
     // signout
     $("#btnLogout").on("click", e => {
         firebase.auth().signOut();
-        // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
+        window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
     });
 
     // add a realtime listener
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
             console.log(firebaseUser);
-            btnLogout.show();
-            window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+            // btnLogout.show();
+            if (window.location.href.indexOf("home-page.html") == -1) {
+                window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+            }
         } else {
             console.log('not logged in');
             btnLogout.hide();
+            // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
         }
     });
+    // usersRef.once('value', function(snapshot) {
+    //     if (snapshot.hasChild(email)) {
+    //         alert('exists');
+    //     }
+    // });
 })
 
 function OAuthSignIn() {

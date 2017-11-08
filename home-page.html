@@ -13,10 +13,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 
-    <!-- javascript files -->
-    <script type="text/javascript" src="assets/js/login-authentication.js"></script>
-    <script type="text/javascript" src="assets/js/styling.js"></script>
-
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
         crossorigin="anonymous">
@@ -26,8 +22,17 @@
     <script src="https://use.fontawesome.com/3f13c469b8.js"></script>
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!-- javascript files -->
+    <script type="text/javascript" src="assets/js/login-authentication.js"></script>
+    <script type="text/javascript" src="assets/js/styling.js"></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+
+    <!-- Google Maps API - loading the google maps geocoding api deferred allows us to load html first -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script>
 
 </head>
 
@@ -164,12 +169,39 @@
     <footer class="footer">
         <div class="container">
             <p class="text-muted">Place sticky footer content here.</p>
-        </div>
-    </footer> -->
+        </div> -->
 
-    <!-- custom JS files -->
-    <script src="assets/js/petFinder_landingPageLoad.js "></script>
-    <script src="assets/js/petFinder_resultsJSON.js "></script>
+        <script>
+            $("#submit-btn").on("click", function (event) {
+
+                 if (sessionStorage.getItem("userLocation") === null) {
+                    // Grab the user input
+                    var userLocationSessionStorage = $("#location-input").val().trim();
+                    alert("submit button clicked.")
+                   
+                    // Store the username into localStorage using "localStorage.setItem"
+                    sessionStorage.setItem("userLocation", userLocationSessionStorage);
+
+                    // And display that name for the user using "localStorage.getItem"
+                    $("#location-input").val(sessionStorage.getItem("userLocation"));
+                    alert(sessionStorage.getItem("userLocation"));
+
+               } else {
+                console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+             
+                }
+            });
+            $("#location-input").val(sessionStorage.getItem("userLocation"));
+
+            //local storage sets any key without a value = to null
+            //so when on the homepage, we check if there is a userLocation
+            //tied to LocalStorage, and if so, we cease to prompt them
+            //for whether it's ok to user their location.
+        </script>
+
+        <!-- custom JS files -->
+        <script src="assets/js/petFinder_landingPageLoad.js "></script>
+        <script src="assets/js/petFinder_resultsJSON.js "></script>
 
 </body>
 

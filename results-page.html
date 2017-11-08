@@ -21,11 +21,14 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>  
 
     <!-- javascript files -->
     <script type="text/javascript" src="assets/js/login-authentication.js"></script>
     <script type="text/javascript" src="assets/js/styling.js"></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+    <script type="text/javascript" src="assets/js/create-embedded-map.js"></script>
 
 </head>
 
@@ -177,7 +180,14 @@
             </a>
         </div>
         <div id="animal-carousel-results-info"></div>
-        <div id="animal-carousel-results-map"></div>
+        <div id="animal-carousel-results-map">
+            <iframe id= "embedded-map"
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="" allowfullscreen>
+          </iframe>
+        </div>
     </div>
 
     <!-- PAGE FOOTER
@@ -188,6 +198,17 @@
             </nav>
         </div>
     </div> -->
+
+<script type="text/javascript">
+      let markerLocation = sessionStorage.getItem("userLocation");
+      let embeddedApiKey = "AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo"
+        $( document ).ready(function() {
+            $('#embedded-map').attr('src','https://www.google.com/maps/embed/v1/place?key=' + embeddedApiKey + '&q=' + markerLocation)
+            console.log($('#embedded-map').attr('src'));
+    console.log( "ready!" );
+ 
+});       
+      </script>
 
     <script src="assets/js/petFinder_resultsPageload.js"></script>
 </body>
