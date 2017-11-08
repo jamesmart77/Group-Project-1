@@ -1,6 +1,7 @@
-
-function getAnimalResults(url, type) {
-
+function singleAnimalResults(url) {
+    
+    localStorage.clear();
+    
     $.ajax({
         type: 'GET',
         data: {},
@@ -8,14 +9,30 @@ function getAnimalResults(url, type) {
         dataType: 'json',
         success: function (data) {
 
-            if(type === "single"){
-                localStorage.setItem("animalResults", JSON.stringify(data.petfinder));
-            } else{
-                localStorage.setItem("animalResults", JSON.stringify(data.petfinder));
-            }
-            
+            localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder));
+
             window.location.href = "results-page.html";
 
         }
     })
 }
+
+function searchBtnFuntion(url) {
+
+    localStorage.clear();
+
+        $.ajax({
+            type: 'GET',
+            data: {},
+            url: url + '&callback=?',
+            dataType: 'json',
+            success: function (data) {
+    
+                localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder));
+    
+    
+                window.location.href = "results-page.html";
+    
+            }
+        })
+    }

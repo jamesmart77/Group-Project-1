@@ -11,7 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
     <!-- javascript files -->
-    <script type="text/javascript" src="assets/js/login-authentication.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/login-authentication.js"></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script> -->
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -19,8 +21,15 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/login-authentication.js"></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+
+    <!-- Google Maps API - loading the google maps geocoding api deferred allows us to load html first -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script>
 
 </head>
 
@@ -128,26 +137,26 @@
             </div>
             <div class="form-group" class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="submit-button" style="padding:0px;">
-                    <button id="submit-btn type=" submit " class="btn btn-primary ">Submit</button>
+                    <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            <div>
-            </div>
+                <div>
+                </div>
         </form>
-    </div>
+        </div>
 
-    <!-- HOME PAGE DIPSLAY OF ANIMAL PHOTO AND NAME-->
-    <div id="animal-preview-container ">
-        <div id="petFinderInfo "></div>
-    </div>
+        <!-- HOME PAGE DIPSLAY OF ANIMAL PHOTO AND NAME-->
+        <div id="animal-preview-container">
+            <div id="petFinderInfo"></div>
+        </div>
 
-    <!-- PAGE FOOTER-->
-    <!-- <footer>
+        <!-- PAGE FOOTER-->
+        <!-- <footer>
         <p>PetHarmony Footer</p>
     </footer> -->
 
-    <!-- custom JS files -->
-    <script src="assets/js/petFinder_landingPageLoad.js "></script>
-    <script src="assets/js/petFinder_resultsJSON.js "></script>
+        <!-- custom JS files -->
+        <script src="assets/js/petFinder_landingPageLoad.js "></script>
+        <script src="assets/js/petFinder_resultsJSON.js "></script>
 
 </body>
 
