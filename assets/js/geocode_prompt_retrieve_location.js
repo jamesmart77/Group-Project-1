@@ -5,44 +5,70 @@
 var map, infoWindow;
 var latlng, userCityState;
 
-function geoCodeReturnCoordinates() {
 
-    // Try HTML5 geolocation.
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            console.log(pos.lat);
-            console.log(pos.lng);
-            latlng = pos.lat + "," + pos.lng
-            console.log(latlng)
-            // infoWindow.setPosition(pos);
-            console.log("Location found.");
-            // infoWindow.open(map);
-            // map.setCenter(pos);
-
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-            return latlng;
-        });
-    } else {
-        // Browser doesn't support Geolocation; return false
-        handleLocationError(false, infoWindow, map.getCenter());
-        console.log("Browser doesn't support geolocation")
-        return false;
+if (sessionStorage.getItem("userLocation") === null) {
+   // if we do not have a userLocation stored in Session Storage, prompt for it 
+    
+   function geoCodeReturnCoordinates() {
+    
+        // Try HTML5 geolocation.
+    
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos.lat);
+                console.log(pos.lng);
+                latlng = pos.lat + "," + pos.lng
+                console.log(latlng)
+                // infoWindow.setPosition(pos);
+                console.log("Location found.");
+                // infoWindow.open(map);
+                // map.setCenter(pos);
+    
+            }, function () {
+                handleLocationError(true, infoWindow, map.getCenter());
+                return latlng;
+            });
+        } else {
+            // Browser doesn't support Geolocation; return false
+            handleLocationError(false, infoWindow, map.getCenter());
+            console.log("Browser doesn't support geolocation")
+            return false;
+        }
     }
+    
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
+    returnCityState()
+
+
+    // Grab the user input
+    var userLocationSessionStorage = $("#location-input").val().trim();
+    alert("submit button clicked.")
+
+    // Store the username into localStorage using "localStorage.setItem"
+    sessionStorage.setItem("userLocation", userLocationSessionStorage);
+
+    // And display that name for the user using "localStorage.getItem"
+    $("#location-input").val(sessionStorage.getItem("userLocation"));
+    alert(sessionStorage.getItem("userLocation"));
+
+} else {
+    console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-}
+
+
 
 
 

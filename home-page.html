@@ -150,6 +150,34 @@
             <div id="petFinderInfo"></div>
         </div>
 
+        <script>
+            $("#submit-btn").on("click", function (event) {
+
+                 if (sessionStorage.getItem("userLocation") === null) {
+                    // Grab the user input
+                    var userLocationSessionStorage = $("#location-input").val().trim();
+                    alert("submit button clicked.")
+                   
+                    // Store the username into localStorage using "localStorage.setItem"
+                    sessionStorage.setItem("userLocation", userLocationSessionStorage);
+
+                    // And display that name for the user using "localStorage.getItem"
+                    $("#location-input").val(sessionStorage.getItem("userLocation"));
+                    alert(sessionStorage.getItem("userLocation"));
+
+               } else {
+                console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+             
+                }
+            });
+            $("#location-input").val(sessionStorage.getItem("userLocation"));
+
+            //local storage sets any key without a value = to null
+            //so when on the homepage, we check if there is a userLocation
+            //tied to LocalStorage, and if so, we cease to prompt them
+            //for whether it's ok to user their location.
+        </script>
+
         <!-- PAGE FOOTER-->
         <!-- <footer>
         <p>PetHarmony Footer</p>
