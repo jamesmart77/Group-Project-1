@@ -71,7 +71,7 @@ $(document).ready(function() {
         } else {
             console.log('not logged in');
             btnLogout.hide();
-            window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
+            // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
         }
     });
     // usersRef.once('value', function(snapshot) {
