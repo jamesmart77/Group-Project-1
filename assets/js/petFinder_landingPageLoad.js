@@ -79,6 +79,7 @@ $("#animal-preview-container").on("click", ".animal-img", function () {
 
 })
 
+
 /*
 - on page load find 1 animal of each type available
     - declare and assign default zip

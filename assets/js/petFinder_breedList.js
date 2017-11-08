@@ -1,3 +1,4 @@
+//ANIMAL TYPE DROPDOWN CHANGE --> UPDATE BREED DROPDOWN
 $("#animal-type-input").on("change", function(){
     
     var animalType = $(this).val().toLowerCase();//animal type needs to be lowercase for api
@@ -15,7 +16,7 @@ $("#animal-type-input").on("change", function(){
             //remove all breed drop list optins except the first(ie. any)
             $('#breed-type-input').children('option:not(:first)').remove();
             
-            //assing breed array
+            //passing breed array
             var petfinder = data.petfinder.breeds;
 
             console.log(petfinder);
