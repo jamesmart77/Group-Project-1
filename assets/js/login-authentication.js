@@ -67,6 +67,7 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             // btnLogout.show();
+
             if (window.location.href.indexOf("home-page.html") == -1) {
                 window.location.href = "home-page.html";
             }
