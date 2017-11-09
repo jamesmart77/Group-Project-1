@@ -12,6 +12,8 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
+var userLoggedIn = false;
+
 $(document).ready(function() {
 
     // Get elements
@@ -60,6 +62,7 @@ $(document).ready(function() {
     $("#btnLogout").on("click", e => {
         firebase.auth().signOut();
         window.location.href = "index.html";
+        userLoggedIn = false;
     });
 
     // add a realtime listener
@@ -67,7 +70,8 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             // btnLogout.show();
-            if (window.location.href.indexOf("home-page.html") == -1) {
+            if (window.location.href.indexOf("home-page.html") == -1 && !userLoggedIn) {
+                userLoggedIn = true;
                 window.location.href = "home-page.html";
             }
         } else {
