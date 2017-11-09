@@ -59,7 +59,7 @@ $(document).ready(function() {
     // signout
     $("#btnLogout").on("click", e => {
         firebase.auth().signOut();
-        window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
+        window.location.href = "index.html";
     });
 
     // add a realtime listener
@@ -68,39 +68,16 @@ $(document).ready(function() {
             console.log(firebaseUser);
             // btnLogout.show();
 
-            // if (window.location.href.indexOf("saved-page.html") == 1) {
-            //     window.location.href = "https://ehulseman.github.io/Group-Project-1/saved-page.html";
-            // }
-
-            //TODO --> this will auto redirect all navigation to home page...Bug
             if (window.location.href.indexOf("home-page.html") == -1) {
-                window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+                window.location.href = "home-page.html";
             }
-
         } else {
+            $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
             console.log('not logged in');
             btnLogout.hide();
             // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
         }
-
-        // if (firebaseUser) {
-        //     console.log(firebaseUser);
-        //     // btnLogout.show();
-        //     if (window.location.href.indexOf("results-page.html") == 1) {
-        //         window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
-        //     }
-        // } else {
-        //     console.log('not logged in');
-        //     btnLogout.hide();
-        //     // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
-        // }
-
     });
-    // usersRef.once('value', function(snapshot) {
-    //     if (snapshot.hasChild(email)) {
-    //         alert('exists');
-    //     }
-    // });
 })
 
 function OAuthSignIn() {
