@@ -1,3 +1,28 @@
+/* STYLING FOR THE LOGIN PAGE */
+#login-logo {
+    text-align: center;
+}
+
+.jumbotron {
+    max-width: 40%;
+    min-height: 100vh;
+}
+
+#web-authentication {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#login-logo {
+    width: 150px;
+    height: 150px;
+}
+
+/* BACKGROUND COLOR */
+body {
+    background-color: rgb(204, 204, 204);
+}
+
 /* STYLING FOR THE NAV BAR */
 .nav-item {
     text-align: right;
@@ -69,4 +94,30 @@ a {
     max-width: 680px;
     padding: 0 15px;
   }
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1090px) {
+    .jumbotron {
+        max-width: 50%;
+        min-height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    .jumbotron {
+        max-width: 100%;
+        min-height: 100vh;
+    }
+
+    .display-3 {
+        font-size: 50px;
+    }
+
+    #login-logo {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+
 
