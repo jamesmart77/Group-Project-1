@@ -81,6 +81,7 @@ function submitBtnSearch(event){
     
                 var isArray = $.isArray(petfinder.pet)
                 
+                //isArray will check if more than one animal has been returned
                 if(isArray){
                     localStorage.setItem("multAnimalResults", JSON.stringify(data.petfinder));
                     // localStorage.setItem("singleAnimalResults", null);

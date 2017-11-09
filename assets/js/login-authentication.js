@@ -72,6 +72,7 @@ $(document).ready(function() {
             //     window.location.href = "https://ehulseman.github.io/Group-Project-1/saved-page.html";
             // }
 
+            //TODO --> this will auto redirect all navigation to home page...Bug
             if (window.location.href.indexOf("home-page.html") == -1) {
                 window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
             }
