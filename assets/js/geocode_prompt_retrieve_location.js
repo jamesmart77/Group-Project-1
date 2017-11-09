@@ -87,10 +87,10 @@ function returnCityState() {
         method: "GET",
         success: function (response) {
 
-            userCityState = (response.results[0].address_components[1].long_name) + ", " + (
-                response.results[
-                    0].address_components[3].long_name);
+            userCityState = response.results[3].formatted_address;
+            //the json response above is finally legit
             console.log(userCityState);
+            console.log("this uses the new format.")
 
         }
     });
