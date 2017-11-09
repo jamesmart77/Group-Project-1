@@ -25,7 +25,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-      <!-- javascript files -->
+    <!-- javascript files -->
     <script type="text/javascript" src="assets/js/login-authentication.js"></script>
     <script type="text/javascript" src="assets/js/styling.js"></script>
     <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
@@ -171,37 +171,45 @@
             <p class="text-muted">Place sticky footer content here.</p>
         </div> -->
 
-        <script>
-            $("#submit-btn").on("click", function (event) {
+    <script>
+        $(document).ready(function () {
+            //returnCityState();
+            //fillInCityState();
+        });
 
-                 if (sessionStorage.getItem("userLocation") === null) {
-                    // Grab the user input
-                    var userLocationSessionStorage = $("#location-input").val().trim();
-                    alert("submit button clicked.")
-                   
-                    // Store the username into localStorage using "localStorage.setItem"
-                    sessionStorage.setItem("userLocation", userLocationSessionStorage);
 
-                    // And display that name for the user using "localStorage.getItem"
-                    $("#location-input").val(sessionStorage.getItem("userLocation"));
-                    alert(sessionStorage.getItem("userLocation"));
 
-               } else {
-                console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
-             
-                }
-            });
-            $("#location-input").val(sessionStorage.getItem("userLocation"));
 
-            //local storage sets any key without a value = to null
-            //so when on the homepage, we check if there is a userLocation
-            //tied to LocalStorage, and if so, we cease to prompt them
-            //for whether it's ok to user their location.
-        </script>
+        // $("#submit-btn").on("click", function (event) {
 
-        <!-- custom JS files -->
-        <script src="assets/js/petFinder_landingPageLoad.js "></script>
-        <script src="assets/js/petFinder_resultsJSON.js "></script>
+        //     if (sessionStorage.getItem("userLocation") === null) {
+        //         // Grab the user input
+        //         var userLocationSessionStorage = $("#location-input").val().trim();
+        //         alert("submit button clicked.")
+
+        //         // Store the username into localStorage using "localStorage.setItem"
+        //         sessionStorage.setItem("userLocation", userLocationSessionStorage);
+
+        //         // And display that name for the user using "localStorage.getItem"
+        //         $("#location-input").val(sessionStorage.getItem("userLocation"));
+        //         alert(sessionStorage.getItem("userLocation"));
+
+        //     } else {
+        //         console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+
+        //     }
+        // });
+        $("#location-input").val(sessionStorage.getItem("userLocation"));
+
+        //local storage sets any key without a value = to null
+        //so when on the homepage, we check if there is a userLocation
+        //tied to LocalStorage, and if so, we cease to prompt them
+        //for whether it's ok to user their location.
+    </script>
+
+    <!-- custom JS files -->
+    <script src="assets/js/petFinder_landingPageLoad.js "></script>
+    <script src="assets/js/petFinder_resultsJSON.js "></script>
 
 </body>
 

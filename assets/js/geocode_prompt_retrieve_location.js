@@ -7,13 +7,13 @@ var latlng, userCityState;
 
 
 
-if (sessionStorage.getItem("userLocation") === null) {
-   // if we do not have a userLocation stored in Session Storage, prompt for it 
-    
-   function geoCodeReturnCoordinates() {
-    
+if (sessionStorage.getItem("userLocation") == null) {
+    // if we do not have a userLocation stored in Session Storage, prompt for it 
+
+    function geoCodeReturnCoordinates() {
+
         // Try HTML5 geolocation.
-    
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
@@ -28,7 +28,7 @@ if (sessionStorage.getItem("userLocation") === null) {
                 console.log("Location found.");
                 // infoWindow.open(map);
                 // map.setCenter(pos);
-    
+
             }, function () {
                 handleLocationError(true, infoWindow, map.getCenter());
                 return latlng;
@@ -40,7 +40,7 @@ if (sessionStorage.getItem("userLocation") === null) {
             return false;
         }
     }
-    
+
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -48,11 +48,12 @@ if (sessionStorage.getItem("userLocation") === null) {
             'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
-    returnCityState()
 
+    
 
     // Grab the user input
-    var userLocationSessionStorage = $("#location-input").val().trim();
+    //var userLocationSessionStorage = $("#location-input").val().trim();
+    var userLocationSessionStorage = returnCityState()
     alert("submit button clicked.")
 
     // Store the username into localStorage using "localStorage.setItem"
@@ -64,7 +65,7 @@ if (sessionStorage.getItem("userLocation") === null) {
 
 } else {
     console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
-
+    fillInCityState()
 }
 
 
@@ -86,12 +87,9 @@ function returnCityState() {
         url: queryURL,
         method: "GET",
         success: function (response) {
-
-            userCityState = (response.results[0].address_components[1].long_name) + ", " + (
-                response.results[
-                    0].address_components[3].long_name);
+            userCityState = response.results[3].formatted_address;
             console.log(userCityState);
-
+            return userCityState
         }
     });
 
