@@ -90,6 +90,7 @@ function returnCityState() {
             userCityState = response.results[3].formatted_address;
             console.log(userCityState);
             return userCityState
+
         }
     });
 
