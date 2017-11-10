@@ -1,5 +1,6 @@
 document.addEventListener("load", resultsPageLoad());
 
+var petLocation
 function resultsPageLoad() {
 
     $(".carousel-inner").empty();
@@ -110,7 +111,7 @@ function insertInfo(petDetails) {
     var sex = petDetails.sex.$t;
     var size = petDetails.size.$t;
     var breed = petDetails.breeds.breed.$t;
-    var location = petDetails.contact.zip.$t;
+      petLocation = petDetails.contact.zip.$t;
 
     var optionsArr = $.isEmptyObject(petDetails.options.option);
 
