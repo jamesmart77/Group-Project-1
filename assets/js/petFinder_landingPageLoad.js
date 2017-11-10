@@ -12,7 +12,7 @@ function homePageLoad() {
 
     for (var i = 0; i < animalType.length; i++) {
         var url =
-            'http://api.petfinder.com/pet.getRandom?key=435c7d11e964556e87d7de00e3333dba&location=' + location +
+            'https://api.petfinder.com/pet.getRandom?key=435c7d11e964556e87d7de00e3333dba&location=' + location +
             '&animal=' + animalType[i] + '&age=' + age + '&count=1&output=full&format=json';
 
 
