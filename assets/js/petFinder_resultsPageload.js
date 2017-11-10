@@ -43,48 +43,6 @@ function resultsPageLoad() {
 
         insertInfo(petDetails)
 
-        // var name = petDetails.name.$t;
-        // var description = petDetails.description.$t;
-        // var age = petDetails.age.$t;
-        // var shots = "NA";
-        // var fixed = "NA";
-        // var houseTrained = "NA";
-        // var sex = petDetails.sex.$t;
-        // var size = petDetails.size.$t;
-        // var breed = petDetails.breeds.breed.$t;
-
-        // for (var i = 0; i < petDetails.options.option.length; i++) {
-        //     if (petDetails.options.option[i].$t === "hasShots") {
-        //         shots = "Yes"
-        //     } else if (petDetails.options.option[i].$t === "altered") {
-        //         fixed = "Yes"
-        //     } else if (petDetails.options.option[i].$t === "housetrained") {
-        //         houseTrained = "Yes"
-        //     }
-        // }
-
-        // //build description in HTML
-        // var descriptionDiv = $("<div class='animal-description-details'>");
-
-        // descriptionDiv.append("<p><b>Name: </b>" + name + "</p>")
-        // descriptionDiv.append("<p><b>Age: </b>" + age + "</p>")
-        // descriptionDiv.append("<p><b>Breed: </b>" + breed + "</p>")
-        // descriptionDiv.append("<p><b>Sex: </b>" + sex + "</p>")
-        // descriptionDiv.append("<p><b>Size: </b>" + size + "</p>")
-        // descriptionDiv.append("<p><b>Shots: </b>" + shots + "</p>")
-        // descriptionDiv.append("<p><b>Fixed: </b>" + fixed + "</p>")
-        // descriptionDiv.append("<p><b>House Trained: </b>" + houseTrained + "</p>")
-        // descriptionDiv.append("<p><b>Description: </b>" + description + "</p>")
-
-        // //add to container
-        // $("#animal-carousel-results-info").append(descriptionDiv);
-
-        // debugger;
-
-        // //MAP INFO
-        // $("#animal-carousel-results-map")
-
-
     } else if (multPetResultsObject) { //checking for multiple animal return
         //then look at the multiAnimalResults localstorage
 
@@ -137,18 +95,9 @@ function resultsPageLoad() {
             }
         }
 
-        //loop through results array
-        //loop through photos for 300px photo
-        //if imgaddress === null after for loop, assign image not available
-        //assign pet id to image
     } else {
         //if neither single nor multiple, return random 10 animals
     }
-
-
-
-
-    //console.log(petResultsArr);
 }
 
 function insertInfo(petDetails) {
@@ -181,7 +130,9 @@ function insertInfo(petDetails) {
     var descriptionDiv = $("<div class='animal-description-details'>");
 
     //populate with new info
-    descriptionDiv.append("<p><b>Name: </b>" + name + "</p>")
+    descriptionDiv.append("<h3>About " + name + "</h3>")
+    descriptionDiv.append("<p>" + description + "<br></p>")
+    descriptionDiv.append("<h4>More About " + name + "</h4>")
     descriptionDiv.append("<p><b>Age: </b>" + age + "</p>")
     descriptionDiv.append("<p><b>Breed: </b>" + breed + "</p>")
     descriptionDiv.append("<p><b>Sex: </b>" + sex + "</p>")
@@ -189,7 +140,7 @@ function insertInfo(petDetails) {
     descriptionDiv.append("<p><b>Shots: </b>" + shots + "</p>")
     descriptionDiv.append("<p><b>Fixed: </b>" + fixed + "</p>")
     descriptionDiv.append("<p><b>House Trained: </b>" + houseTrained + "</p>")
-    descriptionDiv.append("<p><b>Description: </b>" + description + "</p>")
+    
 
     //clear & reset
     $("#animal-carousel-results-info").empty();

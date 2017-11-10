@@ -59,7 +59,7 @@ $(document).ready(function() {
     // signout
     $("#btnLogout").on("click", e => {
         firebase.auth().signOut();
-        window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
+        window.location.href = "index.html";
     });
 
     // add a realtime listener
@@ -74,7 +74,7 @@ $(document).ready(function() {
 
             //TODO --> this will auto redirect all navigation to home page...Bug
             if (window.location.href.indexOf("home-page.html") == -1) {
-                window.location.href = "https://ehulseman.github.io/Group-Project-1/home-page.html";
+                window.location.href = "home-page.html";
             }
 
         } else {
