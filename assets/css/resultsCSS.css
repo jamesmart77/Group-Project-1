@@ -1,0 +1,38 @@
+/* container holding carousel items */
+.carousel-inner{
+    padding: 20px 35px;
+    margin: 0 auto;
+}
+
+/* carousel images */
+.pet-carousel-img{
+    border-radius: 5px;
+    max-height: 750px;
+    margin: 0 auto;
+    max-width: 1060px;
+    padding: 0 35px;
+}
+
+/* pet details */
+.animal-description-details{
+    padding: 15px 35px;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+#animal-carousel-results-map{
+    margin: 0 auto;
+    max-width: 1060px;
+}
+/* google maps */
+#embedded-map{
+    width: 100%;
+    padding: 15px 35px;
+    height: 450px;
+}
+
+@media screen and (max-width: 1060px) {
+    .pet-carousel-img {
+        padding: 0;
+    }
+}
