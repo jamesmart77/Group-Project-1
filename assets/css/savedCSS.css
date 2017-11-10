@@ -1,0 +1,9 @@
+#saved-animal-container {
+    float: left;
+}
+
+#animal-div {
+    width: 20rem;
+    float: left;
+    margin: 10px;
+}
