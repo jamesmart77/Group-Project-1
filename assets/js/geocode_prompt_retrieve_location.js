@@ -9,6 +9,7 @@ var latlng, userCityState;
 
 if (localStorage.getItem("userLocation") == null ||(localStorage.getItem("userLocation") =="undefined")) {
     // if we do not have a userLocation stored in local Storage, prompt for it 
+
 geoCodeReturnCoordinates()
 
     function geoCodeReturnCoordinates() {
@@ -69,7 +70,9 @@ geoCodeReturnCoordinates()
     
 } else {
     console.log("the userLocation Key is" + localStorage.getItem("userLocation"));
-    fillInCityState()
+   // fillInCityState()
+   //we no longer need to call this here, we handle this with page
+   //loading on the js file itself
 }
 
 
