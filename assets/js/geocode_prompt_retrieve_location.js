@@ -7,8 +7,9 @@ var latlng, userCityState;
 
 
 
-if (sessionStorage.getItem("userLocation") == null) {
-    // if we do not have a userLocation stored in Session Storage, prompt for it 
+if (localStorage.getItem("userLocation") == null ||(localStorage.getItem("userLocation") =="undefined")) {
+    // if we do not have a userLocation stored in local Storage, prompt for it 
+geoCodeReturnCoordinates()
 
     function geoCodeReturnCoordinates() {
 
@@ -28,6 +29,18 @@ if (sessionStorage.getItem("userLocation") == null) {
                 console.log("Location found.");
                 // infoWindow.open(map);
                 // map.setCenter(pos);
+
+                var userLocationlocalStorage = returnCityState()
+              //  console.log(userLocationlocalStorage);
+            
+                // Store the username into localStorage using "localStorage.setItem"
+                localStorage.setItem("userLocation", userLocationlocalStorage);
+            
+                // And display that name for the user using "localStorage.getItem"
+                $("#location-input").val(userCityState);
+                console.log(localStorage.getItem("userLocation"));
+                fillInCityState()
+
 
             }, function () {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -52,19 +65,10 @@ if (sessionStorage.getItem("userLocation") == null) {
     
 
     // Grab the user input
-    //var userLocationSessionStorage = $("#location-input").val().trim();
-    var userLocationSessionStorage = returnCityState()
-    alert("submit button clicked.")
-
-    // Store the username into localStorage using "localStorage.setItem"
-    sessionStorage.setItem("userLocation", userLocationSessionStorage);
-
-    // And display that name for the user using "localStorage.getItem"
-    $("#location-input").val(sessionStorage.getItem("userLocation"));
-    alert(sessionStorage.getItem("userLocation"));
-
+    //var userLocationlocalStorage = $("#location-input").val().trim();
+    
 } else {
-    console.log("the userLocation Key is" + sessionStorage.getItem("userLocation"));
+    console.log("the userLocation Key is" + localStorage.getItem("userLocation"));
     fillInCityState()
 }
 
@@ -88,8 +92,16 @@ function returnCityState() {
         method: "GET",
         success: function (response) {
             userCityState = response.results[3].formatted_address;
+            //this trims the zipcode and USA out of string by returning
+            //the substring from the left, up to the second
+            //instance of a space in the formatted address
+            userCityState = userCityState.substring(0,userCityState.lastIndexOf(' ', userCityState.lastIndexOf(' ') - 1))
+            
+            
+            localStorage.setItem("userLocation", userCityState);
             console.log(userCityState);
-            return userCityState
+            fillInCityState()
+            return userCityState;
 
         }
     });
