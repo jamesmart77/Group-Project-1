@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
 
+    <!-- RESET CSS files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -28,8 +31,7 @@
     <!-- javascript files -->
     <script type="text/javascript" src="assets/js/login-authentication.js"></script>
     <script type="text/javascript" src="assets/js/styling.js"></script>
-    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
-    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+  
 
     <!-- Google Maps API - loading the google maps geocoding api deferred allows us to load html first -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script>
@@ -178,8 +180,11 @@
             //fillInCityState();
         });
 
-        //we call this on geocode_prompt_retrieve_location.js
-        //$("#location-input").val(sessionStorage.getItem("userLocation"));
+        //use this when we visit the home page to check whether we
+        //have a userlocation in storage, and if so, fill it in.
+        if (localStorage.getItem("userLocation") !== null ||(localStorage.getItem("userLocation") !=="undefined")) {
+        $("#location-input").val(localStorage.getItem("userLocation"));
+        }
     </script>
 
 
@@ -188,6 +193,9 @@
     <script src="assets/js/petFinder_resultsJSON.js "></script>
     <script src="assets/js/petFinder_breedList.js "></script>
     <script type="text/javascript" src="assets/js/save_pets_database.js"></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+
 
 
 </body>
