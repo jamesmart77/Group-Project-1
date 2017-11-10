@@ -70,18 +70,15 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             // btnLogout.show();
-
             if (window.location.href.indexOf("home-page.html") == -1 && !userLoggedIn) {
                 userLoggedIn = true;
-
                 window.location.href = "home-page.html";
-
-            } else {
-                $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
-                console.log('not logged in');
-                btnLogout.hide();
-                // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
             }
+        } else {
+            $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
+            console.log('not logged in');
+            btnLogout.hide();
+            // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
         }
     });
 })
