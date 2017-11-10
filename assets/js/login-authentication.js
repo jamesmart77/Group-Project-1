@@ -62,6 +62,7 @@ $(document).ready(function() {
         firebase.auth().signOut();
         window.location.href = "index.html";
         localStorage.setItem("userLoggedIn", false);
+        localStorage.clear();
     });
 
     // add a realtime listener
