@@ -32,8 +32,7 @@
     <!-- javascript files -->
     <script type="text/javascript" src="assets/js/login-authentication.js"></script>
     <script type="text/javascript" src="assets/js/styling.js"></script>
-    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
-    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
+  
 
     <!-- Google Maps API - loading the google maps geocoding api deferred allows us to load html first -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo&callback=geoCodeReturnCoordinates"></script>
@@ -184,8 +183,11 @@
             //fillInCityState();
         });
 
-        //we call this on geocode_prompt_retrieve_location.js
-        //$("#location-input").val(sessionStorage.getItem("userLocation"));
+        //use this when we visit the home page to check whether we
+        //have a userlocation in storage, and if so, fill it in.
+        if (sessionStorage.getItem("userLocation") !== null ||(sessionStorage.getItem("userLocation") !=="undefined")) {
+        $("#location-input").val(sessionStorage.getItem("userLocation"));
+        }
     </script>
 
 
@@ -193,6 +195,8 @@
     <script src="assets/js/petFinder_landingPageLoad.js "></script>
     <script src="assets/js/petFinder_resultsJSON.js "></script>
     <script src="assets/js/petFinder_breedList.js "></script>
+    <script type="text/javascript" src="assets/js/geocode_prompt_retrieve_location.js"></script>
+    <script type="text/javascript" src="assets/js/fill-city-state.js"></script>
 
 
 </body>
