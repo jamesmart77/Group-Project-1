@@ -32,7 +32,7 @@ function getSavedPetIDs(petsArr) {
 
 
     for (var i = 0; i < petsArr.length; i++) {
-        var url = 'http://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + petsArr[i]
+        var url = 'https://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + petsArr[i]
 
 
         url += '&format=json'

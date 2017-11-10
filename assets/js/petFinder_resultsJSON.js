@@ -46,7 +46,7 @@ function submitBtnSearch(event){
         }
         
         //location at a minimum required
-        var url = 'http://api.petfinder.com/pet.find?key=435c7d11e964556e87d7de00e3333dba&location=' + location
+        var url = 'https://api.petfinder.com/pet.find?key=435c7d11e964556e87d7de00e3333dba&location=' + location
         
         if(animalType !== 'any'){
             url += '&animal=' + animalType;

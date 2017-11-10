@@ -72,7 +72,7 @@ $("#animal-preview-container").on("click", ".card-img-top", function () {
     var animalID = ($(this).data('id'));
 
     var url =
-        'http://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + animalID +
+        'https://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + animalID +
         '&format=json';
 
         singleAnimalResults(url)

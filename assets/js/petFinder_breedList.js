@@ -3,7 +3,7 @@ $("#animal-type-input").on("change", function(){
     
     var animalType = $(this).val().toLowerCase();//animal type needs to be lowercase for api
     var url =
-    'http://api.petfinder.com/breed.list?key=435c7d11e964556e87d7de00e3333dba&animal=' + animalType +
+    'https://api.petfinder.com/breed.list?key=435c7d11e964556e87d7de00e3333dba&animal=' + animalType +
     '&format=json';
 
     $.ajax({
