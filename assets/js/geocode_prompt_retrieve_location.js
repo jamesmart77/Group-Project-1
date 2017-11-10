@@ -92,6 +92,12 @@ function returnCityState() {
         method: "GET",
         success: function (response) {
             userCityState = response.results[3].formatted_address;
+            //this trims the zipcode and USA out of string by returning
+            //the substring from the left, up to the second
+            //instance of a space in the formatted address
+            userCityState = userCityState.substring(0,userCityState.lastIndexOf(' ', userCityState.lastIndexOf(' ') - 1))
+            
+            
             localStorage.setItem("userLocation", userCityState);
             console.log(userCityState);
             fillInCityState()
