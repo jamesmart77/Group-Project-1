@@ -1,10 +1,10 @@
 var image = "";
 
-$(".carousel-item active").on("click", ".pet-carousel-img", function(event) {
+$(".carousel-inner").on("click", ".pet-carousel-img", function(event) {
     event.preventDefault();
 
-    image = $("pet-carousel-img");
-
+    image = $(this).attr("data-id");
+    // alert(image);
     database.ref().push({
         image: image
 
