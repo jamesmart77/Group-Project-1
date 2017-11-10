@@ -69,7 +69,9 @@ geoCodeReturnCoordinates()
     
 } else {
     console.log("the userLocation Key is" + localStorage.getItem("userLocation"));
-    fillInCityState()
+   // fillInCityState()
+   //we no longer need to call this here, we handle this with page
+   //loading on the js file itself
 }
 
 
