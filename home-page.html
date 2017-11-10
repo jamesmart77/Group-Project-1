@@ -185,8 +185,8 @@
 
         //use this when we visit the home page to check whether we
         //have a userlocation in storage, and if so, fill it in.
-        if (sessionStorage.getItem("userLocation") !== null ||(sessionStorage.getItem("userLocation") !=="undefined")) {
-        $("#location-input").val(sessionStorage.getItem("userLocation"));
+        if (localStorage.getItem("userLocation") !== null ||(localStorage.getItem("userLocation") !=="undefined")) {
+        $("#location-input").val(localStorage.getItem("userLocation"));
         }
     </script>
 
