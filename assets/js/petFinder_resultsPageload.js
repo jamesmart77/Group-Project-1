@@ -1,6 +1,7 @@
 document.addEventListener("load", resultsPageLoad());
 
 var petLocation
+
 function resultsPageLoad() {
 
     $(".carousel-inner").empty();
@@ -111,7 +112,8 @@ function insertInfo(petDetails) {
     var sex = petDetails.sex.$t;
     var size = petDetails.size.$t;
     var breed = petDetails.breeds.breed.$t;
-      petLocation = petDetails.contact.zip.$t;
+
+    petLocation = petDetails.contact.zip.$t;
 
     var optionsArr = $.isEmptyObject(petDetails.options.option);
 
@@ -127,25 +129,64 @@ function insertInfo(petDetails) {
         }
     }
 
-    //build description in HTML
-    var descriptionDiv = $("<div class='animal-description-details'>");
+    //build collapsable cards in HTML
+    var infoContainer = $("<div id='accordion' role='tablist' aria-multiselectable='true'>");
+    var cardDivOne = $("<div class='card'>");
 
-    //populate with new info
-    descriptionDiv.append("<h3>About " + name + "</h3>")
-    descriptionDiv.append("<p>" + description + "<br></p>")
-    descriptionDiv.append("<h4>More About " + name + "</h4>")
-    descriptionDiv.append("<p><b>Age: </b>" + age + "</p>")
-    descriptionDiv.append("<p><b>Breed: </b>" + breed + "</p>")
-    descriptionDiv.append("<p><b>Sex: </b>" + sex + "</p>")
-    descriptionDiv.append("<p><b>Size: </b>" + size + "</p>")
-    descriptionDiv.append("<p><b>Shots: </b>" + shots + "</p>")
-    descriptionDiv.append("<p><b>Fixed: </b>" + fixed + "</p>")
-    descriptionDiv.append("<p><b>House Trained: </b>" + houseTrained + "</p>")
+    var cardHeader = $("<div class='card-header' role='tab' id='headingOne'>");
+
+    var headerDiv = $("<h5 class='mb-0'>");
+    var headerToggle = $("<a id='mainDetailHeader' data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>")
     
+    headerToggle.html("<h4>About " + name + "</h4>")
+    headerDiv.append(headerToggle);
+    cardHeader.append(headerDiv);
+    cardDivOne.append(cardHeader);
+
+    var descriptionCardCollapse = $("<div id='collapseOne' class='collapse show' role='tabpanel' aria-labelledby='headingOne'>");
+    var descriptionCardBlock = $("<div class='card-block'>");
+    
+    descriptionCardBlock.text(description);
+    descriptionCardCollapse.append(descriptionCardBlock);
+
+    cardDivOne.append(descriptionCardCollapse);
+
+    //============================
+    //MORE DETAILS INFO SECTION===
+    //============================
+
+    var cardDivTwo = $("<div class='card'>");
+    var headerDivTwo = $("<h5 class='mb-0'>");
+    var cardHeaderTwo = $("<div class='card-header' role='tab' id='headingTwo'>");
+    var headerToggleTwo = $("<a id='DetailHeader' class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo'>")
+
+    headerToggleTwo.html("<h5>More About " + name + "</h5>")
+    headerDivTwo.append(headerToggleTwo);
+    cardHeaderTwo.append(headerDivTwo);
+    cardDivTwo.append(cardHeaderTwo);
+
+    var descriptionCardCollapseTwo = $("<div id='collapseTwo' class='collapse' role='tabpanel' aria-labelledby='headingTwo'>");
+    var descriptionCardBlockTwo = $("<div class='card-block'>");
+
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Age: </b>" + age + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Breed: </b>" + breed + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Sex: </b>" + sex + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Size: </b>" + size + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Shots: </b>" + shots + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>Fixed: </b>" + fixed + "</p>")
+    descriptionCardBlockTwo.append("<p class='card-text additional-info'><b>House Trained: </b>" + houseTrained + "</p>")
+
+    descriptionCardCollapseTwo.append(descriptionCardBlockTwo);
+
+    cardDivTwo.append(descriptionCardCollapseTwo);
+
+    infoContainer.append(cardDivOne);
+    infoContainer.append(cardDivTwo);
+
 
     //clear & reset
     $("#animal-carousel-results-info").empty();
 
     //add to container
-    $("#animal-carousel-results-info").append(descriptionDiv);
+    $("#animal-carousel-results-info").append(infoContainer);
 }
