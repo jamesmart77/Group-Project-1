@@ -70,6 +70,7 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log(firebaseUser);
             // btnLogout.show();
+
             if (window.location.href.indexOf("home-page.html") == -1 && !userLoggedIn) {
                 localStorage.setItem("userLoggedIn", true);
                 window.location.href = "home-page.html";
