@@ -9,6 +9,7 @@ var latlng, userCityState;
 
 if (localStorage.getItem("userLocation") == null ||(localStorage.getItem("userLocation") =="undefined")) {
     // if we do not have a userLocation stored in local Storage, prompt for it 
+
 geoCodeReturnCoordinates()
 
     function geoCodeReturnCoordinates() {
