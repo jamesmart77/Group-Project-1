@@ -95,10 +95,13 @@ function getSavedPetIDs(petsArr) {
 
 }
 
-$(".deletebtn").click(function(){
+$(".card").on('click', '.savedPetImg', function () {
     alert('test')
 })
 
+$("#animal-div").on('click', function () {
+    alert('test')
+})
 function removeSavedPet() {
     alert($(this).attr('data-id'))
 }
