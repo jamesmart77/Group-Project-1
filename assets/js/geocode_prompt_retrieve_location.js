@@ -29,21 +29,29 @@ if (localStorage.getItem("userHasAllowedLocationAccess") !== "false") {
 						}, function (results, status) {
 							if (status == google.maps.GeocoderStatus.OK) {
 								if (results[1]) {
-									for (var i = 0; i < results.length; i++) {
-										if (results[i].types[0] === "locality") {
-											var city = results[i].address_components[0].short_name;
-											var state = results[i].address_components[2].short_name;
-											//$("#location-input").val(city + ", " + state);
-											userHasAllowedLocationAccess = "true"
-											var userLocationlocalStorage = (city + ", " + state)
-											$("#location-input").val(userLocationlocalStorage);
-											// Store the username into localStorage using "localStorage.setItem"
-											localStorage.setItem("userLocation", userLocationlocalStorage);
-											localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
-											console.log(userLocationlocalStorage);
-											
+									for (var ac = 0; ac < results[0].address_components.length; ac++) {
+										var component = results[0].address_components[ac];
+	
+										switch(component.types[0]) {
+											case 'locality':
+												var city = component.long_name;
+												console.log(city)
+												break;
+											case 'administrative_area_level_1':
+												var state = component.short_name;
+												console.log(state)
+												break;
 										}
-									}
+										userHasAllowedLocationAccess = "true"
+										var userLocationlocalStorage = (city + ", " + state)
+										$("#location-input").val(userLocationlocalStorage);
+										// Store the username into localStorage using "localStorage.setItem"
+										localStorage.setItem("userLocation", userLocationlocalStorage);
+										localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
+										console.log(userLocationlocalStorage);
+
+									};
+
 								} else {
 									console.log("No reverse geocode results.")
 								}
