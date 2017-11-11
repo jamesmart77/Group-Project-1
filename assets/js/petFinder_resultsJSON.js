@@ -1,3 +1,4 @@
+//if animal is clicked on home page
 function singleAnimalResults(url) {
     
     localStorage.removeItem("singleAnimalResults");
@@ -18,8 +19,30 @@ function singleAnimalResults(url) {
 }
 
 //----------------------------------
-//SEARCH BUTTON 
+//SEARCH BUTTON SELECTED
 //----------------------------------
+
+//alert for location validation
+function toggleAlert() {
+    var div = $("<div class='alert alert-danger alert-dismissible fade' role='alert' id='bsalert'>");
+    var btn = $("<button type='button' class='close' data-dismiss='alert' aria-label='Close'>");
+    var spn = $("<span aria-hidden='true'>").html("&times");
+      
+    var alertText = "<strong>UH OH!</strong> Please provide a location before searching." 
+
+    btn.append(spn);
+    div.append(btn);
+    div.append(alertText);
+
+    div.insertAfter( ".navbar" );
+
+    $("#bsalert").addClass("show");//makes alert appear
+    $("#location-input").css("border", "2px solid #C9282D")//outline location input box
+}
+
+$('#bsalert').on('close.bs.alert', toggleAlert)
+
+//=================================
 function submitBtnSearch(event){
     
         event.preventDefault();
@@ -41,13 +64,14 @@ function submitBtnSearch(event){
         }
         //TODO --> Remove alert and css location input border red
         if(location === null || location === undefined || location === ""){
-            alert("Location is required to complete search")
+            toggleAlert()
             return
         }
         
         //location at a minimum required
         var url = 'https://api.petfinder.com/pet.find?key=435c7d11e964556e87d7de00e3333dba&location=' + location
         
+        //creating api url based on search parameters
         if(animalType !== 'any'){
             url += '&animal=' + animalType;
         }
@@ -88,11 +112,8 @@ function submitBtnSearch(event){
                 } else {
                     localStorage.setItem("singleAnimalResults", JSON.stringify(data.petfinder.pets));
                 }
-                // console.log(petfinder);
 
-                window.location.href = "results-page.html";
-                // console.log("is Array: " + isArray);
-    
+                window.location.href = "results-page.html";   
     
             }
         })
