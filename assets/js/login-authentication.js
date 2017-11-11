@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
-$(document).ready(function() {
+$(document).ready(function () {
     var userLoggedIn = localStorage.getItem("userLoggedIn");
 
     // Get elements
@@ -72,7 +72,7 @@ $(document).ready(function() {
             console.log(firebaseUser);
             // btnLogout.show();
 
-            if (window.location.href.indexOf("home-page.html") == -1) {
+            if (window.location.href.indexOf("home-page.html") == -1 && !userLoggedIn) {
                 localStorage.setItem("userLoggedIn", true);
                 window.location.href = "home-page.html";
             }
@@ -84,22 +84,19 @@ $(document).ready(function() {
         }
     });
 
-    // Firebase.authWithPassword(email, pass => {
-    //     $("#auth-text").html("Email and/or password is incorrect.");
-    // })
 })
 
 function OAuthSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
 
     console.log("button")
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         // ...
-    }).catch(function(error) {
+    }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
