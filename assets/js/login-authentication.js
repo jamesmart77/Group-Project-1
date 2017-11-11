@@ -71,7 +71,7 @@ $(document).ready(function() {
             console.log(firebaseUser);
             // btnLogout.show();
 
-            if (window.location.href.indexOf("home-page.html") == -1 && !userLoggedIn) {
+            if (window.location.href.indexOf("home-page.html") == -1) {
                 localStorage.setItem("userLoggedIn", true);
                 window.location.href = "home-page.html";
             }

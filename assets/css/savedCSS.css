@@ -1,9 +1,38 @@
+body {
+    background-color: #e9ecef;
+}
+
 #saved-animal-container {
     float: left;
+    margin-left: 16px;
 }
 
 #animal-div {
     width: 20rem;
     float: left;
-    margin: 10px;
+    margin: 15px 40px 15px 0;
+}
+
+.savedPetImg{
+    height: 300px;
+}
+.savedPetCard {
+    padding: 0;
+}
+
+.savedPetCardBody {
+    padding: 10px;
+}
+
+
+/* awesome font icons */
+
+.fa-trash-o {
+    color: darkred;
+}
+
+.fa-trash-o:hover{
+    -ms-transform: rotate(25deg); /* IE 9 */
+    -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
+    transform: rotate(25deg);
 }
