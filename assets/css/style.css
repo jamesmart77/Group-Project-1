@@ -1,7 +1,9 @@
 /* BACKGROUND COLOR FOR ALL PAGES */
+
 body {
     background-color: #e9ecef;
 }
+
 
 /* STYLING FOR THE NAV BAR */
 
@@ -13,8 +15,20 @@ body {
     cursor: pointer;
 }
 
+.fa-heart-o {
+    color: darkgoldenrod;
+}
+
+.fa-home {
+    color: #777;
+}
+
 
 /* STYLING FOR THE SEARCH PARAMETERS DIV */
+
+#accordion {
+    margin: 0 -1px;
+}
 
 #search-input-container {
     width: 100%;
@@ -24,6 +38,8 @@ body {
 
 .search-heading {
     cursor: pointer;
+    background: #333;
+    color: #fff;
 }
 
 a {
@@ -35,7 +51,7 @@ a {
 .form-check-label {
     padding-left: 0px;
     padding-right: 0px;
-    margin-right: 5px;
+    margin-top: 6px;
 }
 
 #submit-button {
@@ -46,6 +62,9 @@ a {
     cursor: pointer;
 }
 
+.fa-angle-double-down:before {
+    color: #fff;
+}
 
 /* STYLING FOR THE ANIMALS ON THE HOME PAGE */
 
@@ -54,6 +73,7 @@ a {
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
+    padding: 0;
 }
 
 #petFinderInfo,
@@ -64,7 +84,11 @@ a {
 }
 
 .card-img-top {
-    padding-top: 10px;
+    height: 300px;
+}
+
+.card-body {
+    padding: 15px;
 }
 
 
@@ -88,5 +112,11 @@ a {
     #animal-div,
     #petFinderInfo {
         margin: 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .form-check-label {
+        padding-left: 17px;
     }
 }

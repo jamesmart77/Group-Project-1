@@ -1,5 +1,6 @@
 body {
     min-width: 475px;
+    font-family: 'Arial', 'sans-serif';
 }
 
 
@@ -22,6 +23,26 @@ body {
 
 #animal-carousel-results-info {
     margin: 15px 35px;
+}
+
+.savePetIcon {
+    width: 100%;
+    text-align: right;
+    margin: 0 35px 15px 0;
+    color: #000;
+    font-size: 24px;
+}
+
+.fa-heart-o {
+    color: darkred;
+}
+
+.fa-heart-o:hover {
+    color: darkgoldenrod;
+}
+
+.fa-heart {
+    color: darkgoldenrod;
 }
 
 #DetailHeader {

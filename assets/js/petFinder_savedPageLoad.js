@@ -1,16 +1,12 @@
 document.addEventListener("load", savedPageLoad());
 
-var savedImgRef = database.ref("");
-
+var savedImgRef = database.ref();
 
 function savedPageLoad() {
     var savedImgQuery = firebase.database().ref();
     var imgArr = [];
 
-    database.ref().on("value", function (snapshot) {
-
-        var imgCount = snapshot.numChildren();
-
+        //query FB once
         savedImgQuery.once("value")
             .then(function (snap) {
                 snap.forEach(function (childSnapShot) {
@@ -21,16 +17,16 @@ function savedPageLoad() {
                 //get img IDs from petFinder
                 getSavedPetIDs(imgArr);
             })
-    })
 }
 
 function getSavedPetIDs(petsArr) {
 
     console.log(petsArr)
 
+    //remove everything
     $("#saved-animal-container").empty();
 
-
+    //for each saved pet, render to page after ajax call on Pet ID
     for (var i = 0; i < petsArr.length; i++) {
         var url = 'https://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + petsArr[i]
 
@@ -48,14 +44,13 @@ function getSavedPetIDs(petsArr) {
                 var petfinder = data.petfinder.pet;
 
                 if (petfinder) {
-                    var infoDiv = $("<div id='animal-div' class='card col-lg-2 col-md-4 col-sm-12 col-xs-12 savedPetCard'>")
+                    var infoDiv = $("<div id='animal-div' class='card col-lg-3 col-md-4 col-sm-12 col-xs-12 savedPetCard'>")
                     var cardBody = $("<div class='card-body savedPetCardBody'>")
                     var name = $("<h4 class='card-title'>" + petfinder.name.$t + "</h4>");
                     var deleteIcon = $("<span id='deleteSavedPet' class='pull-right deletebtn'>");
 
-                    deleteIcon.attr({
-                        'data-id': petfinder.id.$t
-                    });
+                    infoDiv.attr('data-id', petfinder.id.$t);
+                    deleteIcon.attr('data-id', petfinder.id.$t);
                     deleteIcon.addClass("fa fa-trash-o");
 
                     var imgAddress = "";
@@ -93,15 +88,4 @@ function getSavedPetIDs(petsArr) {
         })
     }
 
-}
-
-$(".card").on('click', '.savedPetImg', function () {
-    alert('test')
-})
-
-$("#animal-div").on('click', function () {
-    alert('test')
-})
-function removeSavedPet() {
-    alert($(this).attr('data-id'))
 }

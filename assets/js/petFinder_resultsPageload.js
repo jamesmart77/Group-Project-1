@@ -4,9 +4,11 @@ var petLocation
 
 function resultsPageLoad() {
 
+    //reset
     $(".carousel-inner").empty();
     $(".animal-carousel-results-info").empty();
 
+    //assessing data situation for upcoming conditional
     var singlePetResultsObject = localStorage.getItem('singleAnimalResults');
     var multPetResultsObject = localStorage.getItem('multAnimalResults');
 
@@ -103,6 +105,7 @@ function resultsPageLoad() {
 }
 
 function insertInfo(petDetails) {
+    //assign pet details
     var name = petDetails.name.$t;
     var description = petDetails.description.$t;
     var age = petDetails.age.$t;
@@ -112,6 +115,9 @@ function insertInfo(petDetails) {
     var sex = petDetails.sex.$t;
     var size = petDetails.size.$t;
     var breed = petDetails.breeds.breed.$t;
+    var petID = petDetails.id.$t;
+
+
 
     petLocation = petDetails.contact.zip.$t;
 
@@ -137,7 +143,11 @@ function insertInfo(petDetails) {
 
     var headerDiv = $("<h5 class='mb-0'>");
     var headerToggle = $("<a id='mainDetailHeader' data-toggle='collapse' data-parent='#accordion' href='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>")
-    
+
+    //adding pet ID to heart icon
+    $(".savePetIcon").removeAttr("data-id");
+    $(".savePetIcon").attr("data-id", petID);
+
     headerToggle.html("<h4>About " + name + "</h4>")
     headerDiv.append(headerToggle);
     cardHeader.append(headerDiv);
@@ -145,7 +155,11 @@ function insertInfo(petDetails) {
 
     var descriptionCardCollapse = $("<div id='collapseOne' class='collapse show' role='tabpanel' aria-labelledby='headingOne'>");
     var descriptionCardBlock = $("<div class='card-block'>");
-    
+
+    if (!description) {
+        description = "No description available at this time..."
+    }
+
     descriptionCardBlock.text(description);
     descriptionCardCollapse.append(descriptionCardBlock);
 
@@ -183,6 +197,12 @@ function insertInfo(petDetails) {
     infoContainer.append(cardDivOne);
     infoContainer.append(cardDivTwo);
 
+    //heart icon reset
+    $(".savePetIcon").empty();
+
+    //insert heart icon & text
+    $(".savePetIcon").addClass("fa fa-heart-o");
+    $(".savePetIcon").html("<b style='font-family:Arial; color:#000'> Save</b>");
 
     //clear & reset
     $("#animal-carousel-results-info").empty();
