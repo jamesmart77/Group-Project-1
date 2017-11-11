@@ -89,3 +89,16 @@ function getSavedPetIDs(petsArr) {
     }
 
 }
+
+//animal on home page selected
+$("#saved-animal-container").on("click", ".savedPetImg", function () {
+    
+        var animalID = ($(this).data('id'));
+    
+        var url =
+            'https://api.petfinder.com/pet.get?key=435c7d11e964556e87d7de00e3333dba&id=' + animalID +
+            '&format=json';
+    
+        singleAnimalResults(url)
+    
+    })
