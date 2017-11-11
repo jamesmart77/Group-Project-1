@@ -7,118 +7,69 @@ var latlng, userCityState;
 var userHasAllowedLocationAccess;
 
 if (localStorage.getItem("userHasAllowedLocationAccess") !== "false") {
-// the user has already disallowed access, do not prompt them,
-//otherwise, proceed
-console.log(localStorage.getItem("userHasAllowedLocationAccess"))
+	// the user has already disallowed access, do not prompt them,
+	//otherwise, proceed
+	console.log(localStorage.getItem("userHasAllowedLocationAccess"))
 
-    
-if (localStorage.getItem("userLocation") == null ||(localStorage.getItem("userLocation") =="undefined")) {
-    // if we do not have a userLocation stored in local Storage, prompt for it 
+	if (localStorage.getItem("userLocation") == null || (localStorage.getItem("userLocation") == "undefined")) {
+		// if we do not have a userLocation stored in local Storage, prompt for it 
 
-geoCodeReturnCoordinates()
+		geoCodeReturnCoordinates()
 
-    function geoCodeReturnCoordinates() {
+		function geoCodeReturnCoordinates() {
 
-        // Try HTML5 geolocation.
+			if (window.navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+						var lat = position.coords.latitude,
+							lng = position.coords.longitude,
+							latlng = new google.maps.LatLng(lat, lng),
+							geocoder = new google.maps.Geocoder();
+						geocoder.geocode({
+							'latLng': latlng
+						}, function (results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								if (results[1]) {
+									for (var i = 0; i < results.length; i++) {
+										if (results[i].types[0] === "locality") {
+											var city = results[i].address_components[0].short_name;
+											var state = results[i].address_components[2].short_name;
+											//$("#location-input").val(city + ", " + state);
+											userHasAllowedLocationAccess = "true"
+											var userLocationlocalStorage = (city + ", " + state)
+											$("#location-input").val(userLocationlocalStorage);
+											// Store the username into localStorage using "localStorage.setItem"
+											localStorage.setItem("userLocation", userLocationlocalStorage);
+											localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
+											console.log(userLocationlocalStorage);
+											
+										}
+									}
+								} else {
+									console.log("No reverse geocode results.")
+								}
+							} else {
+								console.log("Geocoder failed: " + status)
+							}
+						});
+					},
+					function () {
+						console.log("Geolocation not available.")
+						console.log("user has blocked location search")
+						userHasAllowedLocationAccess = false
+						localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                console.log(pos.lat);
-                console.log(pos.lng);
-                latlng = pos.lat + "," + pos.lng
-                console.log(latlng)
-                // infoWindow.setPosition(pos);
-                console.log("Location found.");
-                // infoWindow.open(map);
-                // map.setCenter(pos);
-
-                 userHasAllowedLocationAccess = "true"
-                var userLocationlocalStorage = returnCityState()
-              //  console.log(userLocationlocalStorage);
-            
-                // Store the username into localStorage using "localStorage.setItem"
-                localStorage.setItem("userLocation", userLocationlocalStorage);
-                localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
-
-                // And display that name for the user using "localStorage.getItem"
-                $("#location-input").val(userCityState);
-                console.log(localStorage.getItem("userLocation"));
-                fillInCityState()
-
-
-            }, function () {
-                console.log("user has blocked location search")
-                userHasAllowedLocationAccess = false
-                localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
-                handleLocationError(true, infoWindow, map.getCenter());
-                return latlng;
-            });
-        } else {
-            // Browser doesn't support Geolocation; return false
-            handleLocationError(false, infoWindow, map.getCenter());
-            console.log("Browser doesn't support geolocation")
-            return false;
-        }
-    }
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-    }
-
-    
-
-    // Grab the user input
-    //var userLocationlocalStorage = $("#location-input").val().trim();
-    
-} else {
-    console.log("the userLocation Key is" + localStorage.getItem("userLocation"));
-   // fillInCityState()
-   //we no longer need to call this here, we handle this with page
-   //loading on the js file itself
-}
-
-}
+					});
 
 
 
+			}
 
-//the function below takes the variable latlng, and returns a json performs an
-//api call taking the latlng variable of coordinates, and pasting it into a
-//url, then defines userCityState to be a combination of the city portion of response
-//and the state
 
-function returnCityState() {
-    var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlng +
-        "&key=AIzaSyDVKfD2GQPkmzqBhcT_tSHEt2XM69yRCWo"
 
-    // Creates AJAX call for the specific movie button being clicked
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        success: function (response) {
-            userCityState = response.results[3].formatted_address;
-            //this trims the zipcode and USA out of string by returning
-            //the substring from the left, up to the second
-            //instance of a space in the formatted address
-            userCityState = userCityState.substring(0,userCityState.lastIndexOf(' ', userCityState.lastIndexOf(' ') - 1))
-            
-            
-            localStorage.setItem("userLocation", userCityState);
-            console.log(userCityState);
-            fillInCityState()
-            return userCityState;
+		}
 
-        }
-    });
 
+	}
 }
 
 //we need these two sources included to work properly
