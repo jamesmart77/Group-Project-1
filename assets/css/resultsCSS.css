@@ -33,8 +33,13 @@ body {
     font-size: 24px;
 }
 
+
 .fa-heart-o {
     color: darkred;
+}
+
+.header-heart{
+    color: darkgoldenrod;
 }
 
 .fa-heart-o:hover {
