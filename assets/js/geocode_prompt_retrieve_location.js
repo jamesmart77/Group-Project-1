@@ -4,9 +4,14 @@
 // locate you.
 var map, infoWindow;
 var latlng, userCityState;
+var userHasAllowedLocationAccess;
 
+if (localStorage.getItem("userHasAllowedLocationAccess") !== "false") {
+// the user has already disallowed access, do not prompt them,
+//otherwise, proceed
+console.log(localStorage.getItem("userHasAllowedLocationAccess"))
 
-
+    
 if (localStorage.getItem("userLocation") == null ||(localStorage.getItem("userLocation") =="undefined")) {
     // if we do not have a userLocation stored in local Storage, prompt for it 
 
@@ -31,12 +36,14 @@ geoCodeReturnCoordinates()
                 // infoWindow.open(map);
                 // map.setCenter(pos);
 
+                 userHasAllowedLocationAccess = "true"
                 var userLocationlocalStorage = returnCityState()
               //  console.log(userLocationlocalStorage);
             
                 // Store the username into localStorage using "localStorage.setItem"
                 localStorage.setItem("userLocation", userLocationlocalStorage);
-            
+                localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
+
                 // And display that name for the user using "localStorage.getItem"
                 $("#location-input").val(userCityState);
                 console.log(localStorage.getItem("userLocation"));
@@ -44,6 +51,9 @@ geoCodeReturnCoordinates()
 
 
             }, function () {
+                console.log("user has blocked location search")
+                userHasAllowedLocationAccess = false
+                localStorage.setItem("userHasAllowedLocationAccess", userHasAllowedLocationAccess);
                 handleLocationError(true, infoWindow, map.getCenter());
                 return latlng;
             });
@@ -75,7 +85,7 @@ geoCodeReturnCoordinates()
    //loading on the js file itself
 }
 
-
+}
 
 
 
