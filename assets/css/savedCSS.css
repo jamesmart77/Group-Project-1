@@ -49,6 +49,10 @@ body {
     transition-duration: .6s;
 }
 
+.fa-sign-out{
+    color: darkred;
+}
+
 .fa-trash-o:hover {
     -ms-transform: rotate(25deg);
     /* IE 9 */
