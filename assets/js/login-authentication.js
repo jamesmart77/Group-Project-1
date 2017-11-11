@@ -38,9 +38,10 @@ $(document).ready(function() {
         // }
         //Sign Up
         const promise = auth.signInWithEmailAndPassword(email, pass);
-        promise.catch(e => console.log(e.message));
-        // if (pass !== true) {
-        //     $("#txtPassword").empty();
+        promise.catch(e => $("#auth-text").html(e.message));
+
+        // if (e.message) {
+        //     $("#auth-text").html("The password is invalid or the user does not have a password.");
         // }
     });
     // Add signup event
@@ -76,12 +77,16 @@ $(document).ready(function() {
                 window.location.href = "home-page.html";
             }
         } else {
-            $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
+            // $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
             console.log('not logged in');
             btnLogout.hide();
             // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
         }
     });
+
+    // Firebase.authWithPassword(email, pass => {
+    //     $("#auth-text").html("Email and/or password is incorrect.");
+    // })
 })
 
 function OAuthSignIn() {
