@@ -23,6 +23,10 @@ body {
     color: #777;
 }
 
+.fa-sign-out{
+    color: darkred;
+}
+
 
 /* STYLING FOR THE SEARCH PARAMETERS DIV */
 
