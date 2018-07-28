@@ -110,7 +110,9 @@ function OAuthSignIn() {
         // The signed-in user info.
         var user = result.user;
         // redirect to home page
-        window.location("/home-page.html");
+        const wL = window.location;
+
+        window.location(wL.protocol + "//" + wL.hostname + "/home-page.html");
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
