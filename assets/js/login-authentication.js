@@ -1,22 +1,30 @@
+// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBdvzDGVlb8w6es6yBOacj8n7TTkvVmoCA",
-    authDomain: "group-project-1-8353f.firebaseapp.com",
-    databaseURL: "https://group-project-1-8353f.firebaseio.com",
-    projectId: "group-project-1-8353f",
-    storageBucket: "group-project-1-8353f.appspot.com",
-    messagingSenderId: "653234238699"
+    apiKey: "AIzaSyA5BBHsZ0uF6i3UrfHLADv6BmvxO4qZdP0",
+    authDomain: "petfinder-b69ee.firebaseapp.com",
+    databaseURL: "https://petfinder-b69ee.firebaseio.com",
+    projectId: "petfinder-b69ee",
+    storageBucket: "",
+    messagingSenderId: "377377835561"
 };
-
 firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
 
-$(document).ready(function () {
+$(document).ready(() => {
     var userLoggedIn = localStorage.getItem("userLoggedIn");
 
-    // Get elements
+    //if on index page, hide login-error modal
+    if(window.location.href.indexOf("index.html") !== -1){
+        $("#login-error").hide();
+    }
 
+    //if user logged in, rediret to home page
+    if(userLoggedIn){
+        window.location.href = "home-page.html";
+    }
+    // Get elements
     const txtEmail = $("#txtEmail");
     const txtPassword = $("#txtPassword");
     const btnLogin = $("#btnLogin");
@@ -80,7 +88,7 @@ $(document).ready(function () {
             // $("#auth-text").html("Sign Up or Login to find your purrrfect pet!");
             console.log('not logged in');
             btnLogout.hide();
-            // window.location.href = "https://ehulseman.github.io/Group-Project-1/index.html";
+            // window.location.href = "index.html";
         }
     });
 
@@ -90,13 +98,14 @@ function OAuthSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
 
     console.log("button")
-    firebase.auth().signInWithPopup(provider).then(function (result) {
+    firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        // ...
-    }).catch(function (error) {
+        // redirect to home page
+        window.location("/home-page.html");
+      }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -104,7 +113,36 @@ function OAuthSignIn() {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
+
+        console.log("ERROR\n")
+        console.log("Error Message\n" + errorMessage + "\n\n")
+        console.log("Error Code\n" + errorCode + "\n\n")
+        console.log("Error Email\n" + email + "\n\n")
+        console.log("Error Credential\n" + credential + "\n\n")
         // ...
-    });
+      });
+
+
+    // firebase.auth().signInWithPopup(provider).then(function (result) {
+    //     // This gives you a Google Access Token. You can use it to access the Google API.
+    //     var token = result.credential.accessToken;
+    //     // The signed-in user info.
+    //     var user = result.user;
+    //     // redirect to home page
+    //     window.location("/home-page.html");
+    // }).catch(function (error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     // The email of the user's account used.
+    //     var email = error.email;
+    //     // The firebase.auth.AuthCredential type that was used.
+    //     var credential = error.credential;
+
+    //     
+
+    //     $("#login-error").show();
+    //     // ...
+    // });
 
 }
