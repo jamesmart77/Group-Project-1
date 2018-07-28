@@ -4,7 +4,7 @@ var config = {
     authDomain: "petfinder-b69ee.firebaseapp.com",
     databaseURL: "https://petfinder-b69ee.firebaseio.com",
     projectId: "petfinder-b69ee",
-    storageBucket: "",
+    storageBucket: "petfinder-b69ee.appspot.com",
     messagingSenderId: "377377835561"
 };
 firebase.initializeApp(config);
